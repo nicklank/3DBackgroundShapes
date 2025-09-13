@@ -68,11 +68,6 @@
 </head>
 <body>
     <div id="canvas-container"></div>
-    
-    <div class="content">
-        <h1>Your Portfolio</h1>
-        <p>This is your interactive 3D background. The floating shapes represent your projects and add visual interest to your portfolio.</p>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
@@ -294,9 +289,12 @@
                 mesh.rotation.z += shapeObj.rotationSpeed.z;
             });
             
-            // Gentle camera movement
-            camera.position.x += (mouseX * 0.2 - camera.position.x) * 0.02;
-            camera.position.y += (mouseY * 0.15 - camera.position.y) * 0.02;
+            // Enhanced camera movement based on mouse
+            const targetX = mouseX * 2;
+            const targetY = mouseY * 1.5;
+            
+            camera.position.x += (targetX - camera.position.x) * 0.05;
+            camera.position.y += (targetY - camera.position.y) * 0.05;
             camera.lookAt(scene.position);
             
             renderer.render(scene, camera);
